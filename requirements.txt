@@ -1,0 +1,5 @@
+asyncio
+streamlit
+networkx
+numpy
+openai
