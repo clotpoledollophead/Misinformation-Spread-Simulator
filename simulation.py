@@ -1,10 +1,16 @@
 import asyncio
 import json
 import networkx as nx
+import os
 import random
 
 from dataclasses import dataclass
 from openai import OpenAI
+
+OPENAI_KEY = os.getenv("OPENAI_API_KEY")
+if not OPENAI_KEY:
+    raise RuntimeError("Please set the OPENAI_API_KEY environment variable")
+client = OpenAI(api_key=OPENAI_KEY)
 
 @dataclass
 class Message:

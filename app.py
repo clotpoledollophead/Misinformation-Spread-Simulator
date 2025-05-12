@@ -21,8 +21,8 @@ correction_text = st.sidebar.text_area(
 )
 
 graph_size = st.sidebar.slider("Population Size", 30, 80, 50, step=5)
-T          = st.sidebar.slider("Time Steps", 5, 20, 10, step=1)
-share_pct  = st.sidebar.slider("Share Threshold", 0.0, 1.0, 0.5, step=0.05)
+T = st.sidebar.slider("Time Steps", 5, 20, 10, step=1)
+share_pct = st.sidebar.slider("Share Threshold", 0.0, 1.0, 0.5, step=0.05)
 
 if st.sidebar.button("Run Simulation"):
     with st.spinner("Simulating…"):
