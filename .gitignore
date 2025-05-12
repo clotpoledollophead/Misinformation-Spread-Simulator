@@ -14,3 +14,4 @@ config.json
 
 # Mac/Linux swap files
 *~
+.streamlit/secrets.toml
