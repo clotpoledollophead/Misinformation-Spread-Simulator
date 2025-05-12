@@ -18,12 +18,6 @@ class Message:
     origin: str # node ID or "official"
     truth: bool # true/false claim
 
-# set the OpenAI API key
-with open("config.json", "r") as f:
-    cfg = json.load(f)
-
-client = OpenAI(api_key=cfg["chatgpt_api_key"])
-
 def compute_belief(agent: dict, msg: Message) -> float:
     base = agent['trust_official'] if msg.origin == 'official' else agent['susceptibility']
     return base * (0.8 if msg.text in agent['memory'] else 1.0)
