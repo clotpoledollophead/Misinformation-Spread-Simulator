@@ -1,0 +1,16 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv_demo/
+.venv/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Your API key file
+config.json
+
+# Mac/Linux swap files
+*~
