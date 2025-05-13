@@ -1,16 +1,17 @@
 import asyncio
+import google.genai as genai
 import json
 import networkx as nx
 import os
 import random
 
 from dataclasses import dataclass
-from openai import OpenAI
+# from openai import OpenAI
 
-OPENAI_KEY = os.getenv("OPENAI_API_KEY")
-if not OPENAI_KEY:
-    raise RuntimeError("Please set the OPENAI_API_KEY environment variable")
-client = OpenAI(api_key=OPENAI_KEY)
+API_KEY = os.getenv("API_KEY")
+if not API_KEY:
+    raise RuntimeError("Please set the API_KEY environment variable")
+client = genai(api_key=API_KEY)
 
 @dataclass
 class Message:
@@ -46,14 +47,17 @@ def _sync_generate_post(agent_id: int, message_text: str) -> str:
         "Write a social media post to share this information in you rown style."
     )
 
-    resp = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+    resp = genai.chat.create(
+        # model="gpt-3.5-turbo",
+        model = "gemma-3-27b-it",
+        temperature=0.7,
+        candidates=1,
         messages=[{"role": "user",
                    "content": prompt}],
                    temperature=0.7
     )
 
-    return resp.choices[0].message.content.strip()
+    return resp.candidates[0].content
 
 
 async def generate_post(agent_id: int, message_text: str) -> str:
