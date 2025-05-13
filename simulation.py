@@ -11,7 +11,8 @@ from dataclasses import dataclass
 API_KEY = os.getenv("API_KEY")
 if not API_KEY:
     raise RuntimeError("Please set the API_KEY environment variable")
-client = genai(api_key=API_KEY)
+# client = genai(api_key=API_KEY)
+genai.configure(api_key=API_KEY)
 
 @dataclass
 class Message:
@@ -53,8 +54,7 @@ def _sync_generate_post(agent_id: int, message_text: str) -> str:
         temperature=0.7,
         candidates=1,
         messages=[{"role": "user",
-                   "content": prompt}],
-                   temperature=0.7
+                   "content": prompt}]
     )
 
     return resp.candidates[0].content
