@@ -11,6 +11,7 @@ venv_demo/
 
 # Your API key file
 config.json
+.secrets.json
 
 # Mac/Linux swap files
 *~
